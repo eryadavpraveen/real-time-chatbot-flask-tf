@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d0d0d;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .page-title {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .chat-container {
+      width: 700px;
+      height: 450px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .chat-box {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta {
+      font-size: 12px;
+      margin-bottom: 4px;
+      opacity: 0.8;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 5px;
+    }
+
+    .meta-left {
+      justify-content: flex-start;
+    }
+
+    .meta-right {
+      justify-content: flex-end;
+    }
+
+    .message {
+      max-width: 70%;
+      margin: 5px 0 15px 0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      position: relative;
+    }
+
+    .assistant {
+      align-self: flex-start;
+      background: #333;
+      color: #eee;
+      border-bottom-left-radius: 0;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: #6a5acd;
+      color: white;
+      border-bottom-right-radius: 0;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 15px;
+      background: #111;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      font-size: 14px;
+    }
+
+    .input-area button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #6a5acd;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+
+    .input-area button:hover {
+      background: #836fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="page-title">CHATBOT</div>
+
+  <div class="chat-container">
+    <img src="static/logo.png" alt="Logo" class="logo">
+
+    <div id="chat-box" class="chat-box"></div>
+
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function timeAgo(date) {
+      const seconds = Math.floor((new Date() - date) / 1000);
+      let interval = Math.floor(seconds / 31536000);
+      if (interval >= 1) return interval + " year" + (interval > 1 ? "s" : "") + " ago";
+      interval = Math.floor(seconds / 2592000);
+      if (interval >= 1) return interval + " month" + (interval > 1 ? "s" : "") + " ago";
+      interval = Math.floor(seconds / 86400);
+      if (interval >= 1) return interval + " day" + (interval > 1 ? "s" : "") + " ago";
+      interval = Math.floor(seconds / 3600);
+      if (interval >= 1) return interval + " hour" + (interval > 1 ? "s" : "") + " ago";
+      interval = Math.floor(seconds / 60);
+      if (interval >= 1) return interval + " minute" + (interval > 1 ? "s" : "") + " ago";
+      return "just now";
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("user-input");
+      const message = input.value.trim();
+      if (message === "") return;
+
+      addMessage("User", message, "user");
+      input.value = "";
+
+      const res = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+      const data = await res.json();
+
+      addMessage("Assistant", data.response, "assistant");
+    }
+
+    function addMessage(sender, text, type) {
+      const chatBox = document.getElementById("chat-box");
+
+      const now = new Date();
+
+      // meta line
+      const meta = document.createElement("div");
+      meta.classList.add("meta", type === "user" ? "meta-right" : "meta-left");
+      meta.innerHTML = `<span>${sender} • ${timeAgo(now)}</span>`;
+
+      // message bubble
+      const wrapper = document.createElement("div");
+      wrapper.classList.add("message", type);
+      wrapper.innerText = text;
+
+      chatBox.appendChild(meta);
+      chatBox.appendChild(wrapper);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // auto update times
+    setInterval(() => {
+      document.querySelectorAll(".meta").forEach(meta => {
+        const parts = meta.innerText.split("•");
+        if (parts.length === 2) {
+          const sender = parts[0].trim();
+          const date = new Date();
+          meta.innerText = `${sender} • ${timeAgo(date)}`;
+        }
+      });
+    }, 30000);
+  </script>
+</body>
+</html>

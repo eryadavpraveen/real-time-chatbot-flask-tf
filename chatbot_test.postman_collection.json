@@ -1,0 +1,28 @@
+{
+  "info": {
+    "name": "Chatbot API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Chat API Test",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \"message\": \"Hello\" }"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/chat",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "5000",
+          "path": ["chat"]
+        }
+      }
+    }
+  ]
+}

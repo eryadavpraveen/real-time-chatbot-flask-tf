@@ -1,0 +1,231 @@
+{
+  "intents": [
+
+    {
+      "tag": "intro",
+      "patterns": [
+        "Hii",
+        "Who are you?",
+        "What is your limitations?",
+        "What is your name?",
+        "What is your work?",
+        "Hello"
+      ],
+      "responses": [
+        "Hello! I am your AI Assistant, trained to answer Python programming questions and help you learn, debug, and explore Python more effectively."
+      ]
+    },
+
+    {
+      "tag": "python_intro",
+      "patterns": [
+        "What is Python?",
+        "Explain Python",
+        "Why use Python?",
+        "Features of Python"
+      ],
+      "responses": [
+        "Python is a high-level, interpreted programming language created by Guido van Rossum in 1991. It emphasizes simplicity, readability, and productivity. Key features: dynamically typed, garbage-collected, huge standard libraries, cross-platform support, and strong community."
+      ]
+    },
+
+    {
+      "tag": "advantages",
+      "patterns": [
+        "Why is Python popular?",
+        "Advantages of Python",
+        "Benefits of using Python"
+      ],
+      "responses": [
+        "Advantages of Python:\n1. Easy to learn & read\n2. Large standard library\n3. Open-source & cross-platform\n4. Used in AI, ML, Web Dev, Data Science\n5. Strong community support"
+      ]
+    },
+
+    {
+      "tag": "data_types",
+      "patterns": [
+        "What are Python data types?",
+        "List data types in Python",
+        "Explain mutable and immutable types"
+      ],
+      "responses": [
+        "Python Data Types:\n- Numeric: int, float, complex\n- Sequence: list, tuple, range\n- Text: str\n- Set: set, frozenset\n- Mapping: dict\n- Boolean: bool\n- NoneType: None\n\nMutable → list, dict, set\nImmutable → str, tuple, int, frozenset"
+      ]
+    },
+
+    {
+      "tag": "variables",
+      "patterns": [
+        "What are variables in Python?",
+        "How to declare a variable?",
+        "Rules for naming variables"
+      ],
+      "responses": [
+        "Variables are names that refer to memory locations. Example:\n\nx = 10\ny = 'Hello'\n\nRules:\n1. Must start with letter/underscore\n2. Cannot start with number\n3. Case-sensitive\n4. Keywords not allowed"
+      ]
+    },
+
+    {
+      "tag": "operators",
+      "patterns": [
+        "Explain operators in Python",
+        "Types of operators",
+        "What are Python operators?"
+      ],
+      "responses": [
+        "Operators in Python:\n1. Arithmetic (+, -, *, /, %, **, //)\n2. Relational (==, !=, >, <, >=, <=)\n3. Logical (and, or, not)\n4. Bitwise (&, |, ^, ~, <<, >>)\n5. Assignment (=, +=, -=, *=, etc.)\n6. Membership (in, not in)\n7. Identity (is, is not)"
+      ]
+    },
+
+    {
+      "tag": "list_comprehension",
+      "patterns": [
+        "What is list comprehension?",
+        "Example of list comprehension"
+      ],
+      "responses": [
+        "List comprehension provides a concise way to create lists.\n\nExample:\n\nsquares = [x**2 for x in range(10) if x % 2 == 0]\nprint(squares)  # [0, 4, 16, 36, 64]"
+      ]
+    },
+
+    {
+      "tag": "functions",
+      "patterns": [
+        "What are functions in Python?",
+        "How to define a function?",
+        "Explain functions"
+      ],
+      "responses": [
+        "Functions are reusable blocks of code. Defined using 'def'.\n\nExample:\n\ndef add(a, b):\n    return a + b\n\nprint(add(3,4)) # 7"
+      ]
+    },
+
+    {
+      "tag": "lambda",
+      "patterns": [
+        "What is lambda function?",
+        "Explain anonymous functions in Python"
+      ],
+      "responses": [
+        "Lambda functions are small anonymous functions defined with 'lambda'.\n\nExample:\nadd = lambda x,y: x+y\nprint(add(2,3)) # 5"
+      ]
+    },
+
+    {
+      "tag": "oop_basics",
+      "patterns": [
+        "What is OOP in Python?",
+        "Explain classes and objects",
+        "Object-oriented programming in Python"
+      ],
+      "responses": [
+        "OOP organizes code into objects (data + behavior). Python supports:\n- Class: blueprint\n- Object: instance\n- Inheritance\n- Polymorphism\n- Encapsulation\n- Abstraction\n\nExample:\nclass Car:\n    def __init__(self, brand):\n        self.brand = brand\n\nc = Car('Tesla')"
+      ]
+    },
+
+    {
+      "tag": "decorators",
+      "patterns": [
+        "What are decorators in Python?",
+        "Explain decorators with example"
+      ],
+      "responses": [
+        "Decorators allow modification of functions without changing code. Example:\n\ndef decorator(func):\n    def wrapper():\n        print('Before function')\n        func()\n        print('After function')\n    return wrapper\n\n@decorator\ndef hello():\n    print('Hello!')\n\nhello()"
+      ]
+    },
+
+    {
+      "tag": "generators",
+      "patterns": [
+        "What are generators?",
+        "Explain yield keyword"
+      ],
+      "responses": [
+        "Generators produce items one at a time using 'yield'. Efficient for memory.\n\nExample:\ndef squares(n):\n    for i in range(n):\n        yield i**2\n\nfor num in squares(5):\n    print(num)"
+      ]
+    },
+
+    {
+      "tag": "exception_handling",
+      "patterns": [
+        "What is exception handling?",
+        "Explain try except in Python",
+        "How to handle errors"
+      ],
+      "responses": [
+        "Exception handling prevents crashes. Syntax:\n\ntry:\n    x = 1/0\nexcept ZeroDivisionError:\n    print('Division by zero not allowed')\nfinally:\n    print('This always runs')"
+      ]
+    },
+
+    {
+      "tag": "numpy_basics",
+      "patterns": [
+        "What is NumPy?",
+        "Explain NumPy arrays",
+        "Why use NumPy?"
+      ],
+      "responses": [
+        "NumPy is a library for numerical computing. Provides n-dimensional arrays (ndarray).\n\nExample:\nimport numpy as np\na = np.array([1,2,3])\nprint(a*2) # [2,4,6]"
+      ]
+    },
+
+    {
+      "tag": "pandas_basics",
+      "patterns": [
+        "What is Pandas?",
+        "Explain DataFrame",
+        "Series vs DataFrame"
+      ],
+      "responses": [
+        "Pandas is a data analysis library.\n- Series: 1D labeled array\n- DataFrame: 2D table of rows/columns\n\nExample:\nimport pandas as pd\ndf = pd.DataFrame({'a':[1,2], 'b':[3,4]})\nprint(df)"
+      ]
+    },
+
+    {
+      "tag": "flask_basics",
+      "patterns": [
+        "What is Flask?",
+        "Flask web framework",
+        "Flask vs Django"
+      ],
+      "responses": [
+        "Flask is a lightweight Python web framework.\n\nExample:\nfrom flask import Flask\napp = Flask(__name__)\n@app.route('/')\ndef home():\n    return 'Hello Flask'\n\napp.run()"
+      ]
+    },
+
+    {
+      "tag": "django_basics",
+      "patterns": [
+        "What is Django?",
+        "Explain Django features"
+      ],
+      "responses": [
+        "Django is a high-level Python web framework.\nFeatures:\n- MTV architecture\n- ORM support\n- Authentication system\n- Scalable\n- Admin panel"
+      ]
+    },
+
+    {
+      "tag": "ml_basics",
+      "patterns": [
+        "What is Machine Learning in Python?",
+        "ML libraries in Python",
+        "How to use Python for ML"
+      ],
+      "responses": [
+        "Python is widely used in ML with libraries: scikit-learn, TensorFlow, Keras, PyTorch. Example workflow: preprocessing with Pandas, training models with scikit-learn/TensorFlow."
+      ]
+    },
+
+    {
+      "tag": "gil",
+      "patterns": [
+        "What is GIL in Python?",
+        "Explain Global Interpreter Lock"
+      ],
+      "responses": [
+        "GIL = Global Interpreter Lock. It allows only one thread to execute at a time in CPython. This limits true parallel execution of threads, but multiprocessing can bypass this limitation."
+      ]
+    }
+
+  ]
+}
