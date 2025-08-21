@@ -27,7 +27,7 @@ Built with **Flask, TensorFlow, NLTK, and MongoDB**, this chatbot provides a sim
 
 ## 📂 Project Structure
 
-real-time-chatbot/
+real-time-chatbot/<br>
 │── static/ # CSS, JS, images
 │── templates/ # HTML templates (chat UI)
 │── app.py # Flask server
