@@ -1,6 +1,6 @@
 # 🤖 Real-Time Python Chatbot with Flask + TensorFlow
 
-An AI-powered chatbot designed to answer **Python programming questions** in real-time.  
+An AI-powered chatbot designed to answer **Python programming questions** in real-time. <br> 
 Built with **Flask, TensorFlow, NLTK, and MongoDB**, this chatbot provides a simple web interface and REST API support.  
 
 ---
@@ -28,18 +28,18 @@ Built with **Flask, TensorFlow, NLTK, and MongoDB**, this chatbot provides a sim
 ## 📂 Project Structure
 
 real-time-chatbot/<br>
-│── static/ # CSS, JS, images
-│── templates/ # HTML templates (chat UI)
-│── app.py # Flask server
-│── chatbot_model.h5 # Trained TensorFlow model
-│── chatbot_test.postman_collection.json # Postman API test collection
-│── classes.pkl # Pickled class labels
-│── intents.json # Training dataset (Python Q&A intents)
-│── model.py # Model loading & prediction
-│── requirements.txt # Dependencies
-│── train_model.py # Training script
-│── utils.py # Text preprocessing helpers
-│── words.pkl # Pickled vocabulary
+│── static/ # CSS, JS, images<br>
+│── templates/ # HTML templates (chat UI)<br>
+│── app.py # Flask server<br>
+│── chatbot_model.h5 # Trained TensorFlow model<br>
+│── chatbot_test.postman_collection.json # Postman API test collection<br>
+│── classes.pkl # Pickled class labels<br>
+│── intents.json # Training dataset (Python Q&A intents)<br>
+│── model.py # Model loading & prediction<br>
+│── requirements.txt # Dependencies<br>
+│── train_model.py # Training script<br>
+│── utils.py # Text preprocessing helpers<br>
+│── words.pkl # Pickled vocabulary<br>
 
 
 ## Create virtual environment & install dependencies
